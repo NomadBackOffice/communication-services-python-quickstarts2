@@ -1,0 +1,28 @@
+name: acs-communication-service  
+
+metadata:  
+  author: j-dub  
+  version: 1.0  
+  description: An Azure Communication Services project deployed using Python and Azure Developer CLI.  
+  license: MIT  
+  tags:  
+    - azure  
+    - communication-services  
+    - python  
+    - azd  
+
+services:  
+  backend:  
+    project: ./communication-services-python-quickstarts2
+    language: python  
+    host: appservice  # Use 'appservice' if deploying a web app; change if necessary  
+    environmentVariables:
+      COMMUNICATION_SERVICE_CONNECTION_STRING: "$(communicationServiceConnectionString)"
+
+resourceGroup:  
+  name: acs-resource-group  
+  location: eastus  
+
+infrastructure:  
+  templates:  
+    - infra/main.bicep  
